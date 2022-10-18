@@ -80,12 +80,7 @@ const Footer = () => {
             </Menu>
           ))}
 
-          <SocialMedia
-            variants={slideInRight}
-            initial="hidden"
-            ref={ref}
-            animate={controls}
-          >
+          <SocialMedia>
             {
               <List>
                 {SocialLink.map((link) => (
