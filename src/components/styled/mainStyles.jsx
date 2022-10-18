@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { colors } from "./globalStyle";
 
 // Main Container
-const MainContainer = styled(motion.main)`
+const MainContainer = styled(motion.div)`
   background-color: ${colors.neutral.grayBg};
   width: 100%;
   display: flex;
@@ -371,7 +371,8 @@ const ButtonWrapper = styled(motion.div)`
 `;
 
 const CopyButton = styled(Button)`
-  background-color: ${({copied}) => (copied ?  colors.primary.darkViolet : colors.primary.cyan)};
+  background-color: ${({ copied }) =>
+    copied ? colors.primary.darkViolet : colors.primary.cyan};
   width: 100%;
   font-size: 0.875rem;
   padding: 0.875rem 2rem;
