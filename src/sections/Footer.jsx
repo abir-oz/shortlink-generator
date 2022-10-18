@@ -73,7 +73,7 @@ const Footer = () => {
               <List>
                 {menu.items.map((item, index) => (
                   <Item whileHover={{ scale: 1.03 }} key={index}>
-                    <a href={item.toLowerCase()}>{item}</a>
+                    <a href={item.toLowerCase().replace(/\s+/g, '')}>{item}</a>
                   </Item>
                 ))}
               </List>

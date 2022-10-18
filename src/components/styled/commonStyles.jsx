@@ -40,7 +40,7 @@ export const Button = styled(motion.a)`
 
   @media (min-width: 992px) {
     color: ${(props) =>
-      props.color ? colors.neutral.white : colors.neutral.veryDarkViolet};
+      props.colorFill ? colors.neutral.white : colors.neutral.veryDarkViolet};
     margin-bottom: 0;
     &:first-of-type {
       margin-top: 0;
