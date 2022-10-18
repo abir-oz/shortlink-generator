@@ -25,9 +25,9 @@ export const Button = styled(motion.a)`
   font-size: ${mobileFont};
   font-weight: ${fontWeight};
   display: inline-block;
-  padding: ${({ padding }) => padding};
+  padding: ${({ pad }) => pad};
   border-radius: 3rem;
-  background-color: ${(props) => (props.color ? colors.primary.cyan : '')};
+  background-color: ${(props) => (props.colorFill ? colors.primary.cyan : '')};
   color: ${colors.neutral.white};
   margin-bottom: 1rem;
   border: none;

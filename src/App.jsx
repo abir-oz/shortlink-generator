@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <main role="main">
+      <main>
         <Header />
         <HomeHero />
         <MainSection />

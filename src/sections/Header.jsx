@@ -74,12 +74,12 @@ const Header = () => {
           </Menu>
 
           <Buttons>
-            <Button as="a" href="/login" aria-label="login">
+            <Button href="/login" aria-label="login">
               Login
             </Button>
             <Button
-              padding="0.7rem 2rem"
-              color="color"
+              pad="0.7rem 2rem"
+              colorFill="color"
               href="/sign-up"
               aria-label="Sign Up"
             >
@@ -110,7 +110,7 @@ const Header = () => {
             <Button href="/login" aria-label="login">
               Login
             </Button>
-            <Button padding="0.7rem 7rem" color="color" as="a" href="/sign-up">
+            <Button pad="0.7rem 7rem" colorFill="color" href="/sign-up">
               Sign Up
             </Button>
           </Buttons>

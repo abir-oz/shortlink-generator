@@ -18,43 +18,23 @@ const HomeHero = () => {
       <Wrapper>
         <Typography>
           <H1
-            variants={slideInLeft}
-            initial="hidden"
-            animate="visible"
-            custom={1 * 0.2}
-            key="hero-heading"
           >
             More than just shorter links
           </H1>
-          <P
-            variants={slideInLeft}
-            initial="hidden"
-            animate="visible"
-            custom={4 * 0.2}
-            key="hero-paragraph"
-          >
+          <P>
             Build your brand’s recognition and get detailed insights on how your
             links are performing.
           </P>
           <Button
-            variants={slideInLeft}
-            initial="hidden"
-            animate="visible"
             href="/get-started"
-            padding="0.75rem 2.5rem"
-            color="color"
-            custom={6 * 0.2}
-            key="hero-button"
+            pad="0.75rem 2.5rem"
+            colorFill="color"
           >
             Get Started
           </Button>
         </Typography>
       </Wrapper>
       <Wrapper
-        variants={slideInRight}
-        initial="hidden"
-        animate="visible"
-        custom={0.5}
       >
         <Illustration>
           <Image src="/illustration-working.svg" alt="illustration" />

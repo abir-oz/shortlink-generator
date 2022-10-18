@@ -40,7 +40,7 @@ const Boost = () => {
           animate={controls}
           ref={ref}
           variants={slideInRight}
-          color="color"
+          colorFill="color"
           padding="0.875rem 2.5rem"
         >
           Get Started
