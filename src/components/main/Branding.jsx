@@ -27,7 +27,7 @@ function Branding() {
         {cardData.map((card, index) => (
           <Card key={index}>
             <Icon>
-              <img src={card.icon} alt={card.iconAlt} />
+              <img src={card.icon} alt={card.heading} />
             </Icon>
             <Heading>{card.heading}</Heading>
             <Paragraph>{card.paragraph}</Paragraph>

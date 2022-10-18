@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import MainLogo from '../components/MainLogo';
-import { Anchor, Button } from '../components/styled/commonStyles';
+import React, { useEffect, useState } from "react";
+import MainLogo from "../components/MainLogo";
+import { Anchor, Button } from "../components/styled/commonStyles";
 import {
   Buttons,
   Container,
@@ -10,9 +10,9 @@ import {
   MobileMenuContainer,
   Nav,
   Toggler,
-} from '../components/styled/headerStyles';
+} from "../components/styled/headerStyles";
 
-const MENUITEMS = ['Features', 'Pricing', 'Resources'];
+const MENUITEMS = ["Features", "Pricing", "Resources"];
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -32,10 +32,10 @@ const Header = () => {
       }
     };
     showNav();
-    window.addEventListener('resize', showNav);
+    window.addEventListener("resize", showNav);
 
     return () => {
-      window.removeEventListener('resize', showNav);
+      window.removeEventListener("resize", showNav);
     };
   }, []);
 
@@ -43,16 +43,16 @@ const Header = () => {
     const closeMenu = (e) => {
       if (
         showMobileMenu &&
-        !e.target.closest('#mobile-menu') &&
-        !e.target.closest('#toggler')
+        !e.target.closest("#mobile-menu") &&
+        !e.target.closest("#toggler")
       ) {
         setShowMobileMenu(false);
       }
     };
 
-    document.addEventListener('click', closeMenu);
+    document.addEventListener("click", closeMenu);
     return () => {
-      document.removeEventListener('click', closeMenu);
+      document.removeEventListener("click", closeMenu);
     };
   }, [showMobileMenu]);
 
@@ -61,9 +61,8 @@ const Header = () => {
       {showMenu ? (
         <Nav>
           <Logo>
-            <Anchor href="/">
-              {/* <img src="/logo.svg" alt="logo" /> */}
-              <MainLogo fill={'#000'} />
+            <Anchor href="/" aria-label="Logo">
+              <MainLogo fill={"#000"} />
             </Anchor>
           </Logo>
           <Menu>
@@ -75,10 +74,15 @@ const Header = () => {
           </Menu>
 
           <Buttons>
-            <Button as="a" href="/login">
+            <Button as="a" href="/login" aria-label="login">
               Login
             </Button>
-            <Button padding="0.7rem 2rem" color="color" as="a" href="/sign-up">
+            <Button
+              padding="0.7rem 2rem"
+              color="color"
+              href="/sign-up"
+              aria-label="Sign Up"
+            >
               Sign Up
             </Button>
           </Buttons>
@@ -87,7 +91,7 @@ const Header = () => {
         <>
           <Logo>
             <Anchor href="/">
-              <img src="/logo.svg" alt="logo" />
+              <MainLogo fill={"#000"} />
             </Anchor>
           </Logo>
           <Toggler id="toggler" onClick={toggleMenu} />
@@ -103,7 +107,7 @@ const Header = () => {
             ))}
           </Menu>
           <Buttons>
-            <Button as="a" href="/login">
+            <Button href="/login" aria-label="login">
               Login
             </Button>
             <Button padding="0.7rem 7rem" color="color" as="a" href="/sign-up">
