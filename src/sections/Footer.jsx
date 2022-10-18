@@ -1,182 +1,121 @@
-import styled from 'styled-components';
-import { colors } from '../styled/globalStyle';
+import { AnimatePresence, useAnimation, motion } from "framer-motion";
+import React, { useEffect } from "react";
+import { useInView } from "react-intersection-observer";
+import { cardVariant, slideInLeft, slideInRight } from "../components/framer";
+import MainLogo from "../components/MainLogo";
+import { colors } from "../components/styled/globalStyle";
+import {
+  FooterContainer,
+  Wrapper,
+  Logo,
+  MenusContainer,
+  Menu,
+  MenuTitle,
+  List,
+  Item,
+  SocialMedia,
+} from "../components/styled/footerStyle";
 
 // Menu Data
 const menuData = [
   {
-    title: 'Features',
-    items: ['Link Shortening', 'Branded Links', 'Analytics'],
+    title: "Features",
+    items: ["Link Shortening", "Branded Links", "Analytics"],
   },
   {
-    title: 'Resources',
-    items: ['Blog', 'Developers', 'Support'],
+    title: "Resources",
+    items: ["Blog", "Developers", "Support"],
   },
   {
-    title: 'Company',
-    items: ['About', 'Our Team', 'Careers'],
+    title: "Company",
+    items: ["About", "Our Team", "Careers"],
   },
 ];
 
 const SocialLink = [
   {
     id: 1,
-    icon: '/icon-facebook.svg',
-    url: 'https://www.facebook.com/',
+    icon: "/icon-facebook.svg",
+    url: "https://www.facebook.com/",
   },
   {
     id: 2,
-    icon: '/icon-twitter.svg',
-    url: 'https://twitter.com/',
+    icon: "/icon-twitter.svg",
+    url: "https://twitter.com/",
   },
   {
     id: 3,
-    icon: '/icon-pinterest.svg',
-    url: 'https://www.pinterest.com/',
+    icon: "/icon-pinterest.svg",
+    url: "https://www.pinterest.com/",
   },
   {
     id: 4,
-    icon: '/icon-instagram.svg',
-    url: 'https://www.instagram.com/',
+    icon: "/icon-instagram.svg",
+    url: "https://www.instagram.com/",
   },
 ];
 
-const FooterContainer = styled.div`
-  width: 100%;
-  background-color: ${colors.neutral.veryDarkViolet};
-  color: ${colors.neutral.white};
-`;
-
-const Wrapper = styled.div`
-  padding: 6rem 8rem;
-
-  @media (min-width: 768px) {
-    display: flex;
-    flex-direction: row;
-  }
-`;
-
-// Logo
-const Logo = styled.div`
-  margin-top: 2rem;
-  text-align: center;
-  & img {
-    width: 110px;
-  }
-
-  @media (min-width: 768px) {
-    margin-top: 0;
-  }
-`;
-
-// Menus container
-const MenusContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  text-align: center;
-
-  @media (min-width: 768px) {
-    flex-direction: row;
-    text-align: left;
-    margin-left: auto;
-    gap: 5rem;
-  }
-`;
-
-// Menu
-const Menu = styled.div`
-  margin: 1.5rem 0;
-
-  @media (min-width: 768px) {
-    margin: 0 2rem;
-  }
-`;
-
-// Menu Title
-const MenuTitle = styled.h3`
-  font-size: 1.125rem;
-  font-weight: 700;
-  margin-bottom: 1.3rem;
-`;
-
-// List
-const List = styled.ul``;
-
-const Item = styled.li`
-  margin-bottom: 0.7rem;
-  font-size: 1rem;
-  font-weight: 400;
-  & a {
-    color: ${colors.neutral.grayishViolet};
-
-    &:hover {
-      color: ${colors.neutral.white};
-      text-decoration: underline;
-    }
-  }
-`;
-
-const SocialMedia = styled.div`
-  & ul {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2rem;
-
-    & li {
-      margin: 0 0.8rem;
-
-      &:first-child {
-        margin-left: 0;
-      }
-
-      &:last-child {
-        margin-right: 0;
-      }
-
-      & a {
-        & img {
-          width: 20px;
-        }
-      }
-    }
-
-    @media (min-width: 768px) {
-      margin-top: 0;
-    }
-  }
-`;
-
 const Footer = () => {
+  const controls = useAnimation();
+  const [ref, inView] = useInView();
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [controls, inView]);
+
   return (
     <FooterContainer>
       <Wrapper>
-        <Logo>
-          <img src="/logo-footer.svg" alt="" />
+        <Logo
+          variants={slideInLeft}
+          initial="hidden"
+          ref={ref}
+          animate={controls}
+        >
+          <MainLogo fill={colors.neutral.white} />
         </Logo>
         <MenusContainer>
           {menuData.map((menu, index) => (
-            <Menu key={index}>
-              <MenuTitle>{menu.title}</MenuTitle>
-              <List>
-                {menu.items.map((item, index) => (
-                  <Item key={index}>
-                    <a href={item.toLowerCase()}>{item}</a>
-                  </Item>
-                ))}
-              </List>
-            </Menu>
+            <AnimatePresence key={index.toString()}>
+              <Menu
+                custom={index * 0.5}
+                variants={cardVariant}
+                initial="hidden"
+                ref={ref}
+                animate={controls}
+                exit="hidden"
+              >
+                <MenuTitle>{menu.title}</MenuTitle>
+                <List>
+                  {menu.items.map((item, index) => (
+                    <Item whileHover={{ scale: 1.03 }} key={index}>
+                      <a href={item.toLowerCase()}>{item}</a>
+                    </Item>
+                  ))}
+                </List>
+              </Menu>
+            </AnimatePresence>
           ))}
 
-          <SocialMedia>
+          <SocialMedia
+            variants={slideInRight}
+            initial="hidden"
+            ref={ref}
+            animate={controls}
+          >
             {
               <List>
                 {SocialLink.map((link) => (
-                  <li key={link.id}>
+                  <motion.li
+                    key={link.id}
+                    whileHover={{ scale: 1.1}}
+                  >
                     <a href={link.url} target="_blank" rel="noreferrer">
                       <img src={link.icon} alt="" />
                     </a>
-                  </li>
+                  </motion.li>
                 ))}
               </List>
             }

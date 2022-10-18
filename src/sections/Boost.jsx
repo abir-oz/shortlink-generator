@@ -1,52 +1,48 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Button } from '../styled/commonStyles';
-import { colors } from '../styled/globalStyle';
-
-const BoostContainer = styled.div`
-  width: 100%;
-  background-color: ${colors.primary.darkViolet};
-  background-image: url('/bg-boost-mobile.svg');
-  background-repeat: no-repeat;
-  background-position: right;
-
-  @media (min-width: 768px) {
-    background-image: url('/bg-boost-desktop.svg');
-  }
-`;
-const TextContainer = styled.div`
-  padding: 4rem 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 0.5rem;
-
-  @media (min-width: 768px) {
-    gap: 1rem;
-  }
-`;
-
-const Heading = styled.h3`
-  color: ${colors.neutral.white};
-  font-size: 1.7rem;
-  font-weight: 700;
-`;
-
-const ButtonMod = styled(Button)`
-  font-size: 1.375rem;
-
-  @media (min-width: 768px) {
-    padding: 0.875rem 2.5rem;
-  }
-`;
+import { useAnimation } from "framer-motion";
+import React, { useEffect } from "react";
+import { useInView } from "react-intersection-observer";
+import { boostVar, slideInLeft, slideInRight } from "../components/framer";
+import {
+  BoostContainer,
+  ButtonMod,
+  Heading,
+  TextContainer,
+} from "../components/styled/boostStyles";
 
 const Boost = () => {
+  const controls = useAnimation();
+  const [ref, inView] = useInView();
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [controls, inView]);
+
   return (
-    <BoostContainer>
+    <BoostContainer
+      initial="hidden"
+      animate={controls}
+      ref={ref}
+      variants={boostVar}
+    >
       <TextContainer>
-        <Heading>Boost your links today</Heading>
-        <ButtonMod color="color" padding="0.875rem 2.5rem">
+        <Heading
+          initial="hidden"
+          animate={controls}
+          ref={ref}
+          variants={slideInLeft}
+        >
+          Boost your links today
+        </Heading>
+        <ButtonMod
+          initial="hidden"
+          animate={controls}
+          ref={ref}
+          variants={slideInRight}
+          color="color"
+          padding="0.875rem 2.5rem"
+        >
           Get Started
         </ButtonMod>
       </TextContainer>

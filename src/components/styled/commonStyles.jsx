@@ -1,10 +1,11 @@
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import { colors } from './globalStyle';
 
 const mobileFont = '0.875rem';
 const fontWeight = 700;
 
-export const Anchor = styled.a`
+export const Anchor = styled(motion.a)`
   color: ${colors.neutral.white};
   font-size: ${mobileFont};
   font-weight: ${fontWeight};
@@ -20,7 +21,7 @@ export const Anchor = styled.a`
   }
 `;
 
-export const Button = styled.button`
+export const Button = styled(motion.a)`
   font-size: ${mobileFont};
   font-weight: ${fontWeight};
   display: inline-block;

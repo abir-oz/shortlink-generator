@@ -43,6 +43,8 @@ export const GlobalStyle = createGlobalStyle`
     body {
         font-family: 'Poppins', sans-serif;
         font-size: ${fontSize};
+        width: 100%;
+        overflow-x: hidden;
     }
 
     a {
@@ -56,7 +58,4 @@ export const GlobalStyle = createGlobalStyle`
     button {
         cursor: pointer;
     }
-
-    
-    
 `;

@@ -1,11 +1,11 @@
-import styled from 'styled-components';
-import { colors } from '../styled/globalStyle';
+import { motion } from "framer-motion";
+import styled from "styled-components";
+import { colors } from "./globalStyle";
 
 // Main Container
-const MainContainer = styled.main`
+const MainContainer = styled(motion.main)`
   background-color: ${colors.neutral.grayBg};
   width: 100%;
-  /* height: 100vh; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,14 +14,14 @@ const MainContainer = styled.main`
 `;
 
 // Form Part
-const FormWrapper = styled.div`
+const FormWrapper = styled(motion.div)`
   position: absolute;
   top: -5.25rem;
   right: 1.5rem;
   left: 1.5rem;
   background-color: ${colors.primary.darkViolet};
   border-radius: 0.7rem;
-  background-image: url('/bg-shorten-mobile.svg');
+  background-image: url("/bg-shorten-mobile.svg");
   background-repeat: no-repeat;
   background-position: right top;
   margin-bottom: 8rem;
@@ -30,18 +30,17 @@ const FormWrapper = styled.div`
     top: -4.5rem;
     right: 8rem;
     left: 8rem;
-    background-image: url('/bg-shorten-desktop.svg');
+    background-image: url("/bg-shorten-desktop.svg");
     background-position: right top;
   }
 `;
 
-const Form = styled.form`
+const Form = styled(motion.form)`
   padding: 1.7rem;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
   @media (min-width: 768px) {
     flex-direction: row;
     flex-wrap: wrap;
@@ -50,16 +49,20 @@ const Form = styled.form`
   }
 `;
 
-const Input = styled.input`
+const Input = styled(motion.input)`
   width: 100%;
-  border: none;
+  border: ${(props) =>
+    props.error ? `2px solid ${colors.secondary.red}` : "none"};
   border-radius: 0.3rem;
   padding: 1rem;
+  font-size: 1rem;
+  position: relative;
   &:focus {
     outline: none;
   }
   &::placeholder {
-    color: ${colors.neutral.grayishViolet};
+    color: ${(props) =>
+      props.error ? colors.secondary.red : colors.neutral.grayishViolet};
     font-size: 1rem;
     font-weight: 700;
   }
@@ -70,7 +73,17 @@ const Input = styled.input`
   }
 `;
 
-const Button = styled.button`
+const ErrorMsg = styled.p`
+  color: ${colors.secondary.red};
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  position: absolute;
+  bottom: 1.2rem;
+  left: 3rem;
+  font-style: italic;
+`;
+
+const Button = styled(motion.button)`
   width: 100%;
   font-size: 1rem;
   font-weight: 700;
@@ -83,6 +96,7 @@ const Button = styled.button`
 
   &:hover {
     cursor: pointer;
+    background-color: rgb(158, 246, 246);
   }
 
   @media (min-width: 768px) {
@@ -93,11 +107,12 @@ const Button = styled.button`
 
 // Brand details
 
-const BrandWrapper = styled.div`
+const BrandWrapper = styled(motion.div)`
   width: 100%;
   margin: 4rem 0;
 `;
-const BrandDetails = styled.section`
+
+const BrandDetails = styled(motion.div)`
   padding: 1.5rem;
   text-align: center;
   display: flex;
@@ -117,7 +132,7 @@ const BrandDetails = styled.section`
 
 // Cards
 
-const HeadingMain = styled.h2`
+const HeadingMain = styled(motion.h2)`
   font-size: 1.5rem;
   font-weight: 700;
   color: ${colors.primary.darkViolet};
@@ -127,7 +142,7 @@ const HeadingMain = styled.h2`
   }
 `;
 
-const Heading = styled.h3`
+const Heading = styled(motion.h3)`
   font-size: 1.3rem;
   font-weight: 700;
   color: ${colors.primary.darkViolet};
@@ -140,7 +155,7 @@ const Heading = styled.h3`
   }
 `;
 
-const Paragraph = styled.p`
+const Paragraph = styled(motion.p)`
   font-size: 0.875rem;
   font-weight: 400;
   color: ${colors.neutral.grayishViolet};
@@ -151,7 +166,7 @@ const Paragraph = styled.p`
   }
 `;
 
-const CardWrapper = styled.section`
+const CardWrapper = styled(motion.div)`
   display: flex;
   flex-direction: column;
   margin: 4rem 0 6rem;
@@ -164,7 +179,7 @@ const CardWrapper = styled.section`
   }
 `;
 
-const Card = styled.div`
+const Card = styled(motion.div)`
   display: flex;
   flex-direction: column;
   padding: 5rem 2.5rem 3rem;
@@ -175,14 +190,11 @@ const Card = styled.div`
   position: relative;
   z-index: 1;
   margin-bottom: 5rem;
-
-  @media (min-width: 768px) {
-    text-align: left;
-  }
+  height: 280px;
 
   &:not(:last-child) {
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       bottom: -5rem;
       left: 50%;
@@ -199,10 +211,11 @@ const Card = styled.div`
   }
 
   @media (min-width: 768px) {
+    text-align: left;
     &:not(:last-child) {
       &::after {
         @media (min-width: 768px) {
-          content: '';
+          content: "";
           position: absolute;
           right: -3rem;
           bottom: 40%;
@@ -217,19 +230,19 @@ const Card = styled.div`
     }
 
     &:nth-child(2) {
-      transform: translateY(3rem);
+      margin-top: 3.5rem;
       &::after {
-        transform: translateY(-3rem);
+        transform: translateY(-3.5rem);
       }
     }
 
     &:nth-child(3) {
-      transform: translateY(6rem);
+      margin-top: 7rem;
     }
   }
 `;
 
-const Icon = styled.div`
+const Icon = styled(motion.div)`
   position: absolute;
   top: -2.5rem;
   left: 50%;
@@ -259,12 +272,12 @@ const Icon = styled.div`
 
 // Clipboard
 
-const ClipBoard = styled.div`
+const PreviousLinks = styled(motion.div)`
   width: 100%;
   margin-top: 6rem;
 `;
 
-const ClipWrapper = styled.div`
+const LinksWrapper = styled(motion.ul)`
   display: flex;
   flex-direction: column;
   padding: 1.5rem 1.375rem;
@@ -278,7 +291,7 @@ const ClipWrapper = styled.div`
   }
 `;
 
-const Clip = styled.div`
+const LinkItem = styled(motion.li)`
   width: 100%;
   border-radius: 0.5rem;
   background-color: ${colors.neutral.white};
@@ -295,7 +308,7 @@ const Clip = styled.div`
   }
 `;
 
-const LongUrl = styled.div`
+const LongUrl = styled(motion.div)`
   & a {
     overflow: hidden;
     white-space: wrap;
@@ -312,7 +325,7 @@ const LongUrl = styled.div`
   }
 `;
 
-const ShortenLink = styled.div`
+const ShortenLink = styled(motion.div)`
   & a {
     overflow: hidden;
     white-space: wrap;
@@ -330,7 +343,7 @@ const ShortenLink = styled.div`
 
   //separator
   &::before {
-    content: '';
+    content: "";
     display: block;
     width: 100%;
     height: 1px;
@@ -348,7 +361,7 @@ const ShortenLink = styled.div`
   }
 `;
 
-const ButtonWrapper = styled.div`
+const ButtonWrapper = styled(motion.div)`
   padding: 0.2rem 1rem 1rem;
 
   @media (min-width: 768px) {
@@ -358,6 +371,7 @@ const ButtonWrapper = styled.div`
 `;
 
 const CopyButton = styled(Button)`
+  background-color: ${({copied}) => (copied ?  colors.primary.darkViolet : colors.primary.cyan)};
   width: 100%;
   font-size: 0.875rem;
   padding: 0.875rem 2rem;
@@ -378,11 +392,12 @@ export {
   CardWrapper,
   Card,
   Icon,
-  ClipBoard,
-  ClipWrapper,
-  Clip,
   LongUrl,
   ShortenLink,
   ButtonWrapper,
   CopyButton,
+  ErrorMsg,
+  PreviousLinks,
+  LinksWrapper,
+  LinkItem,
 };

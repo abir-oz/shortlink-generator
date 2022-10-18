@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Anchor, Button } from '../styled/commonStyles';
+import MainLogo from '../components/MainLogo';
+import { Anchor, Button } from '../components/styled/commonStyles';
 import {
   Buttons,
   Container,
@@ -9,7 +10,7 @@ import {
   MobileMenuContainer,
   Nav,
   Toggler,
-} from '../styled/headerStyles';
+} from '../components/styled/headerStyles';
 
 const MENUITEMS = ['Features', 'Pricing', 'Resources'];
 
@@ -61,7 +62,8 @@ const Header = () => {
         <Nav>
           <Logo>
             <Anchor href="/">
-              <img src="/logo.svg" alt="logo" />
+              {/* <img src="/logo.svg" alt="logo" /> */}
+              <MainLogo fill={'#000'} />
             </Anchor>
           </Logo>
           <Menu>
