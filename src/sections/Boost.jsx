@@ -41,7 +41,7 @@ const Boost = () => {
           ref={ref}
           variants={slideInRight}
           colorFill="color"
-          padding="0.875rem 2.5rem"
+          pad="0.875rem 2.5rem"
         >
           Get Started
         </ButtonMod>
