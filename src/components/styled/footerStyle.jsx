@@ -56,7 +56,7 @@ const Menu = styled(motion.div)`
 `;
 
 // Menu Title
-const MenuTitle = styled(motion.h4)`
+const MenuTitle = styled(motion.h3)`
   font-size: 1.125rem;
   font-weight: 700;
   margin-bottom: 1.3rem;
