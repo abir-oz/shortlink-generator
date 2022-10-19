@@ -1,7 +1,4 @@
-import { AnimatePresence, useAnimation, motion } from "framer-motion";
-import React, { useEffect } from "react";
-import { useInView } from "react-intersection-observer";
-import { cardVariant, slideInLeft, slideInRight } from "../components/framer";
+import React from "react";
 import MainLogo from "../components/MainLogo";
 import { colors } from "../components/styled/globalStyle";
 import {
@@ -15,6 +12,7 @@ import {
   Item,
   SocialMedia,
 } from "../components/styled/footerStyle";
+import { motion } from "framer-motion";
 
 // Menu Data
 const menuData = [
@@ -73,7 +71,7 @@ const Footer = () => {
               <List>
                 {menu.items.map((item, index) => (
                   <Item whileHover={{ scale: 1.03 }} key={index}>
-                    <a href={item.toLowerCase().replace(/\s+/g, '')}>{item}</a>
+                    <a href={item.toLowerCase().replace(/\s+/g, '-')}>{item}</a>
                   </Item>
                 ))}
               </List>

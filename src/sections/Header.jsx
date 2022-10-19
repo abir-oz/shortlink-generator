@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+import styled from "styled-components";
 import MainLogo from "../components/MainLogo";
 import { Anchor, Button } from "../components/styled/commonStyles";
+import { colors } from "../components/styled/globalStyle";
 import {
   Buttons,
   Container,
@@ -11,6 +13,12 @@ import {
   Nav,
   Toggler,
 } from "../components/styled/headerStyles";
+
+const SignUpButton = styled(Button)`
+  padding: 0.7rem 2rem;
+  color: ${colors.neutral.white};
+  background-color: ${colors.primary.cyan};
+`;
 
 const MENUITEMS = ["Features", "Pricing", "Resources"];
 
@@ -39,6 +47,7 @@ const Header = () => {
     };
   }, []);
 
+  // If Mobile is open and user clicks outside of the menu, Menu will be closed.
   useEffect(() => {
     const closeMenu = (e) => {
       if (
@@ -77,14 +86,9 @@ const Header = () => {
             <Button href="/login" aria-label="login">
               Login
             </Button>
-            <Button
-              pad="0.7rem 2rem"
-              colorFill="color"
-              href="/sign-up"
-              aria-label="Sign Up"
-            >
+            <SignUpButton href="/sign-up" aria-label="Sign Up">
               Sign Up
-            </Button>
+            </SignUpButton>
           </Buttons>
         </Nav>
       ) : (
@@ -110,9 +114,7 @@ const Header = () => {
             <Button href="/login" aria-label="login">
               Login
             </Button>
-            <Button pad="0.7rem 7rem" colorFill="color" href="/sign-up">
-              Sign Up
-            </Button>
+            <SignUpButton href="/sign-up">Sign Up</SignUpButton>
           </Buttons>
         </MobileMenuContainer>
       )}

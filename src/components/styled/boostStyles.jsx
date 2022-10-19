@@ -6,12 +6,12 @@ import { Button } from "./commonStyles";
 const BoostContainer = styled(motion.div)`
   width: 100%;
   background-color: ${colors.primary.darkViolet};
-  background-image: url('/bg-boost-mobile.svg');
+  background-image: url("/bg-boost-mobile.svg");
   background-repeat: no-repeat;
   background-position: right;
 
   @media (min-width: 768px) {
-    background-image: url('/bg-boost-desktop.svg');
+    background-image: url("/bg-boost-desktop.svg");
   }
 `;
 const TextContainer = styled(motion.div)`
@@ -35,7 +35,8 @@ const Heading = styled(motion.h2)`
 
 const ButtonMod = styled(Button)`
   font-size: 1.375rem;
-
+  background-color: ${colors.primary.cyan};
+  color: ${colors.neutral.white};
   @media (min-width: 768px) {
     padding: 0.875rem 2.5rem;
   }

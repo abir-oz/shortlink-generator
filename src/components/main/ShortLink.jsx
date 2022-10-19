@@ -1,19 +1,19 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 import {
   ButtonWrapper,
   CopyButton,
   LinkItem,
   LongUrl,
   ShortenLink,
-} from "../styled/mainStyles";
+} from "../styled/clipBoardStyles";
+import { colors } from "../styled/globalStyle";
 
-const Item = ({ link }) => {
-  const [copied, setCopied] = useState(false);
+const CopiedButton = styled(CopyButton)`
+  background-color: ${({ copied }) => copied && colors.primary.darkViolet};
+`;
 
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(link.short_link);
-    setCopied(true);
-  };
+const ShortLink = ({ link, id, copyToClipboard }) => {
   return (
     <LinkItem>
       <LongUrl>
@@ -27,12 +27,12 @@ const Item = ({ link }) => {
         </a>
       </ShortenLink>
       <ButtonWrapper>
-        <CopyButton copied={copied} onClick={copyToClipboard}>
-          {copied ? "Copied!" : "Copy"}
-        </CopyButton>
+        <CopiedButton copied={link.copied} onClick={(e) => copyToClipboard(e, id)}>
+          {link.copied ? "Copied!" : "Copy"}
+        </CopiedButton>
       </ButtonWrapper>
     </LinkItem>
   );
 };
 
-export default Item;
+export default ShortLink;

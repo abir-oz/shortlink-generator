@@ -1,14 +1,13 @@
-import { motion } from 'framer-motion';
-import styled from 'styled-components';
-import { colors } from './globalStyle';
-
+import { motion } from "framer-motion";
+import styled from "styled-components";
+import { colors } from "./globalStyle";
 
 export const Container = styled(motion.div)`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column-reverse;
-  margin-bottom: 6rem;
+  margin-bottom: 8rem;
   overflow-x: hidden;
   @media (min-width: 768px) {
     flex-direction: row;
@@ -71,7 +70,7 @@ export const Illustration = styled(motion.div)`
   }
 
   @media (min-width: 768px) {
-    height: 72vh;
+    height: 65vh;
   }
 `;
 

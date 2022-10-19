@@ -1,20 +1,15 @@
-import { useAnimation } from "framer-motion";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useInView } from "react-intersection-observer";
-import { formVar } from "../framer";
 import {
   Button,
   Form,
   ErrorMsg,
   FormWrapper,
   Input,
-  PreviousLinks,
-  LinksWrapper,
 } from "../styled/mainStyles";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import Item from "./Item";
+import ShortLinks from "./ShortLinks";
 
 function ShortForm() {
   let currentLinks = JSON.parse(localStorage.getItem("links")) || [];
@@ -30,9 +25,6 @@ function ShortForm() {
       });
   };
 
-  const controls = useAnimation();
-  const [ref, inView] = useInView();
-
   const schema = yup
     .object({
       url: yup.string().url().required("Please add a link"),
@@ -47,12 +39,6 @@ function ShortForm() {
     resolver: yupResolver(schema),
   });
 
-  useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    }
-  }, [controls, inView]);
-
   return (
     <>
       <FormWrapper>
@@ -66,13 +52,7 @@ function ShortForm() {
           <ErrorMsg>{errors.url?.message}</ErrorMsg>
         </Form>
       </FormWrapper>
-      <PreviousLinks>
-        <LinksWrapper>
-          {links.map((link, index) => (
-            <Item link={link} key={index} />
-          ))}
-        </LinksWrapper>
-      </PreviousLinks>
+      <ShortLinks links={links} setLinks={setLinks} />
     </>
   );
 }

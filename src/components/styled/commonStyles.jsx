@@ -25,9 +25,7 @@ export const Button = styled(motion.a)`
   font-size: ${mobileFont};
   font-weight: ${fontWeight};
   display: inline-block;
-  padding: ${({ pad }) => pad};
   border-radius: 3rem;
-  background-color: ${(props) => (props.colorFill ? colors.primary.cyan : '')};
   color: ${colors.neutral.white};
   margin-bottom: 1rem;
   border: none;
@@ -39,8 +37,7 @@ export const Button = styled(motion.a)`
   }
 
   @media (min-width: 992px) {
-    color: ${(props) =>
-      props.colorFill ? colors.neutral.white : colors.neutral.veryDarkViolet};
+    color: ${colors.neutral.veryDarkViolet};
     margin-bottom: 0;
     &:first-of-type {
       margin-top: 0;

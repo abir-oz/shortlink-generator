@@ -8,7 +8,7 @@ import {
   HeadingMain,
   Icon,
   Paragraph,
-} from "../styled/mainStyles";
+} from "../styled/brandStyles";
 
 import { cardData } from "../../../data/cardData";
 
